@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>UML Diagram</title>
+  </head>
+  <script type = "module">
+    import {SvgPlus} from "./4.js"
+    import {UMLDiagram, umlData, VBox, ContextMenu} from "./UML/UML.js"
+
+    let uml = new UMLDiagram("uml-diagram");
+    // uml.addUmlJSON(umlData);
+    let ctx = new ContextMenu("context-menu");
+
+  </script>
+
+  <body>
+    <h1 id = "print-head">UML Diagram</h1>
+    <div id = "sorry-message">
+      Sorry it won't works
+      on this device :(
+    </div>
+    <div id = app class = "rel">
+
+      <div>
+        <svg id="uml-diagram" viewBox="0 0 1200 1200">
+          <defs>
+            <marker id="association" viewBox="-1 -1 12 12" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10">
+              </path>
+            </marker>
+            <marker id="inheritance" viewBox="-1 -1 12 12" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z">
+              </path>
+            </marker>
+            <marker id="aggrigation" viewBox="-1 -1 22 12" refX="20" refY="5" markerWidth="12" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 5 L 10 0 L 20 5 L 10 10 z">
+              </path>
+            </marker>
+            <marker id="composition" viewBox="-1 -1 22 12" refX="20" refY="5" markerWidth="12" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 5 L 10 0 L 20 5 L 10 10 z">
+              </path>
+            </marker>
+          </defs>
+          <style>
+            #uml-diagram {
+              stroke-width: 2;
+            }
+            .v-box text {
+              user-select: none;
+              -webkit-touch-callout:none;
+              -ms-user-select:none;
+              -moz-user-select:none;
+              font-family: monospace;
+            }
+            .v-box rect{
+              fill: white;
+              stroke: black;
+            }
+            #association, #inheritance, #aggrigation, #composition{
+              stroke: black;
+              fill: none;
+              stroke-dasharray: 5 0;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+            }
+            #composition {
+              fill: black;
+              stroke-dasharray: 5 0;
+            }
+            #inheritance, #aggrigation{
+              stroke-dasharray: 5 0;
+              fill: white;
+            }
+            .inheritance .edge-path, .realisation .edge-path{
+              --marker: url("#inheritance");
+            }
+            .aggrigation .edge-path{
+              --marker: url("#aggrigation");
+            }
+            .composition .edge-path{
+              --marker: url("#composition");
+            }
+            .realisation .edge-path, .dependancy .edge-path {
+              stroke-dasharray: 5 5;
+            }
+            .edge-path {
+              --marker: url("#association");
+            }
+            .edge-path.start-marker {
+              marker-start: var(--marker);
+            }
+            .edge-path.end-marker {
+              marker-end: var(--marker);
+            }
+            .v-edge {
+              stroke: black;
+              fill: none;
+            }
+          </style>
+          <g class="v-boxes">
+          <g class="v-box" box-id="BOX0" transform="translate(600,623.86364)" pos="600,623.86364" height="109.37" radius="30" width="177">
+            <rect width="177" height="109.37" rx="30" x="-88.5" y="-54.685">
+            </rect>
+            <g transform="translate(-58.50053405761719, -0.8227272033691406)">
+              <text text-anchor="start" y="0em" style="font-size: 2em;">CAnimal</text>
+              <text text-anchor="start" y="1.7em"> + Walk() : void</text>
+              <text text-anchor="start" y="3.4em">
+              </text>
+            </g>
+          </g>
+          <g class="v-box" box-id="BOX1" transform="translate(143.18182,576.13636)" pos="143.18182,576.13636" height="175.67" radius="30" width="239.39">
+            <rect width="239.39" height="175.67" rx="30" x="-119.695" y="-87.835">
+            </rect>
+            <g transform="translate(-89.6950454711914, -33.97272872924805)">
+              <text text-anchor="start" y="0em" style="font-size: 2em;">CPerson</text>
+              <text text-anchor="start" y="1.7em"> + Feed(CPet pet) : void</text>
+              <text text-anchor="start" y="3.4em"> + WritePoetry() : void</text>
+              <text text-anchor="start" y="5.1em">
+              </text>
+              <text text-anchor="start" y="6.8em"> - feeds: list&lt;CPet&gt;</text>
+            </g>
+          </g>
+          <g class="v-box" box-id="BOX2" transform="translate(634.09091,247.15909)" pos="634.09091,247.15909" height="109.37" radius="30" width="177">
+            <rect width="177" height="109.37" rx="30" x="-88.5" y="-54.685">
+            </rect>
+            <g transform="translate(-58.50053405761719, -0.8227272033691406)">
+              <text text-anchor="start" y="0em" style="font-size: 2em;">CPet</text>
+              <text text-anchor="start" y="1.7em"> + Feed() : void</text>
+              <text text-anchor="start" y="3.4em">
+              </text>
+            </g>
+          </g>
+          <g class="v-box" box-id="BOX3" transform="translate(421.02273,506.25)" pos="421.02273,506.25" height="109.37" radius="30" width="231.6">
+            <rect width="231.6" height="109.37" rx="30" x="-115.8" y="-54.685">
+            </rect>
+            <g transform="translate(-85.79989624023438, -0.8227272033691406)">
+              <text text-anchor="start" y="0em" style="font-size: 2em;">CDog</text>
+              <text text-anchor="start" y="1.7em"> + EatHomework() : void</text>
+              <text text-anchor="start" y="3.4em">
+              </text>
+            </g>
+          </g>
+          <g class="v-box" box-id="BOX4" transform="translate(388.63636,177.27273)" pos="388.63636,177.27273" height="109.37" radius="30" width="231.6">
+            <rect width="231.6" height="109.37" rx="30" x="-115.8" y="-54.685">
+            </rect>
+            <g transform="translate(-85.79989624023438, -0.8227272033691406)">
+              <text text-anchor="start" y="0em" style="font-size: 2em;">CCat</text>
+              <text text-anchor="start" y="1.7em"> + DoSomething() : void</text>
+              <text text-anchor="start" y="3.4em">
+              </text>
+            </g>
+          </g>
+          </g>
+          <g class="v-edges">
+          <g class="v-edge inheritance" box-a="BOX4" box-b="BOX1">
+            <path class="edge-path start-marker" d="M281.62316,223.17093L276.67341,228.12068C211.78517,293.00893,323.92801,427.25016,259.03977,492.13841L254.09002,497.08816">
+            </path>
+            <path class="control" d="M281.62316,223.17093L281.62316,223.17093">
+            </path>
+            <path class="control" d="M254.09002,497.08816L254.09002,497.08816">
+            </path>
+            <path class="control" d="M267.85654,360.12946L267.85654,360.12946">
+            </path>
+          </g>
+          <g class="v-edge" box-a="BOX3" box-b="BOX2">
+            <path class="edge-path end-marker start-marker" d="M528.03593,460.3518L532.98568,455.40205C572.90319,415.48454,509.51044,337.92455,549.42796,298.00704L554.3777,293.05729">
+            </path>
+            <path class="control" d="M528.03593,460.3518L528.03593,460.3518">
+            </path>
+            <path class="control" d="M554.3777,293.05729L554.3777,293.05729">
+            </path>
+            <path class="control" d="M541.20679,376.70456L541.20679,376.70456">
+            </path>
+          </g>
+          <g class="v-edge inheritance" box-a="BOX1" box-b="BOX0">
+            <path class="edge-path end-marker" d="M262.87682,576.13636L269.87682,576.13636C354.2644,576.13636,420.11241,623.86364,504.5,623.86364L511.5,623.86364">
+            </path>
+            <path class="control" d="M262.87682,576.13636L262.87682,576.13636">
+            </path>
+            <path class="control" d="M511.5,623.86364L511.5,623.86364">
+            </path>
+            <path class="control" d="M387.18842,600L387.18842,600">
+            </path>
+          </g>
+          <g class="v-edge aggrigation" box-a="BOX4" box-b="BOX3">
+            <path class="edge-path end-marker" d="M388.63636,231.95773L388.63636,245.95773C388.63636,319.9519,421.02273,363.57083,421.02273,437.565L421.02273,451.565">
+            </path>
+            <path class="control" d="M388.63636,231.95773L388.63636,231.95773">
+            </path>
+            <path class="control" d="M421.02273,451.565L421.02273,451.565">
+            </path>
+            <path class="control" d="M404.82953,341.76141L404.82953,341.76141">
+            </path>
+          </g>
+          </g>
+        </svg>
+      </div>
+
+
+      <div id = "context-menu" style = "display: none">
+        <div onclick = "Edit()">
+          Edit
+        </div>
+        <div onclick = "Remove(event)">
+          Remove
+        </div>
+        <div onclick = "SaveSvg()">
+          Save SVG
+        </div>
+      </div>
+
+      <div class = "tools">
+        <div class = "row">
+          <div onclick = "Print()" class = "button">
+            Print
+          </div>
+          <div onclick = "Clear()" class = "button">
+            Clear
+          </div>
+
+          <div id = "show-hide" onclick = "ToggleShow(event)" class = "button">
+            Hide
+          </div>
+        </div>
+        <div id = "main-tools">
+          <textarea id = "text-area"></textarea>
+          <div id = "add-tool" class = "row">
+            <div onclick = "Add()" class = "button">
+              +
+            </div>
+            <div onclick = "Open()" class = "button">
+              Open SVG
+            </div>
+          </div>
+          <div id = "edit-tool" class = "row">
+            <div onclick = "Save()" class = "button">
+              Apply
+            </div>
+            <div onclick = "Cancel()" class = "button">
+              Cancel
+            </div>
+          </div>
+          <div ondblclick = "HideHints()" class = "hints">
+            <b>Add Boxes</b>, to add a box, enter it's content using the text area above.
+            Click add to create a new box.<br /><br />
+
+            <b>Edit/Remove Boxes</b>, right click on the box you would
+            like to edit/remove. Edit the boxes content using the
+            text area above, then click apply to save changes. <br /><br />
+
+            <b>Add/Remove Edges</b>, to add/remove an edge double click on a box you want to connect.
+            Once the box highlights, click on another box to connect them. <br /><br />
+
+            <b>Edge Arrow Heads</b>, to add/remove an arrow head click on the purple control point
+            where you would to add/remove an arrow head.<br /><br />
+
+            <b>Edge Types</b>, to change the edge type, click the center control
+            point on the edge to toggle through the follwing types:
+            <ul>
+              <li>
+                association (knows a)
+              </li>
+              <li>
+                inheritance (is a)
+              </li>
+              <li>
+                realisation (implements a)
+              </li>
+              <li>
+                dependancy (uses a)
+              </li>
+              <li>
+                aggrigation (has a, doesn't own)
+              </li>
+              <li>
+                composition (has a, owns)
+              </li>
+            </ul>
+            <i>Double click hints to hide</i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id = debug></div>
+  </body>
+  <script>
+
+    let text = document.getElementById("text-area");
+    let app = document.getElementById("app");
+    let uml = document.getElementById("uml-diagram");
+    let ctx = document.getElementById("context-menu");
+    let editTool = document.getElementById("edit-tool");
+    let addTool = document.getElementById("add-tool");
+    let mainTools = document.getElementById("main-tools");
+    let showHideButton = document.getElementById("show-hide");
+    let header = document.getElementById("print-head");
+    let editBox = null;
+    let toolShown = true;
+
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+     app.style.setProperty("display", "none")
+    }
+
+    function SetTool(tool){
+      if (tool == "add") {
+        editTool.style.setProperty("display", "none");
+        addTool.style.setProperty("display", "");
+        editBox = null;
+      } else {
+        editTool.style.setProperty("display", "");
+        addTool.style.setProperty("display", "none");
+      }
+    }
+    SetTool("add")
+
+    function Add(){
+      if (text.value.length > 2) {
+        uml.addUmlBox(text.value);
+        text.value = ""
+      }
+    }
+
+    function ContextMenu(e) {
+      console.log(e);
+    }
+
+    function Remove(e){
+      if (ctx.selected != null) {
+        uml.removeUmlBox(ctx.selected);
+        ctx.hide();
+      }
+    }
+
+    function Edit(){
+      if (ctx.selected != null) {
+        if (!toolShown) ToggleShow();
+        editBox = ctx.selected
+        text.value = editBox.value;
+        SetTool("edit");
+      }
+      ctx.hide();
+    }
+
+    function Save(){
+      if (editBox != null) {
+        editBox.make(text.value);
+      }
+      text.value = "";
+      SetTool("add");
+    }
+
+    function Cancel(){
+      text.value = "";
+      SetTool("add");
+    }
+
+    function Clear(){
+      uml.clear();
+    }
+
+    function SaveSvg(){
+      uml.saveSvg();
+    }
+
+    async function Open(){
+      let vb = uml.getAttribute("viewBox");
+      let numl = await uml.openSvgTo(uml.parentNode);
+      if (numl != null){
+        uml = numl;
+        uml.props = {viewBox: vb}
+      }
+    }
+
+    let meta = false;
+    window.onkeydown = (e) => {
+      if (e.key == "Meta") meta = true;
+      if (e.key == "p" && meta) {
+        e.preventDefault();
+        Print()
+      }
+    }
+    window.onkeyup = (e) => {
+      meta = false;
+    }
+
+    function Print(){
+      var title = prompt("Please enter a title", "UML Diagram");
+      if (title != null) header.innerHTML = title;
+      let oldvb = uml.getAttribute("viewBox");
+      uml.crop();
+      window.print();
+      uml.props = {viewBox: oldvb};
+    }
+
+    function ToggleShow(e){
+      if (toolShown) {
+        mainTools.style.setProperty("display", "none");
+        showHideButton.innerHTML = "Show";
+        toolShown = false;
+      } else {
+        mainTools.style.setProperty("display", "");
+        showHideButton.innerHTML = "Hide";
+        toolShown = true;
+      }
+    }
+
+    function HideHints(){
+      for (let el of document.getElementsByClassName("hints")) {
+        el.style.setProperty("display", "none");
+      }
+    }
+  </script>
+  <style>
+    body {
+      margin: 0;
+      font-family: monospace;
+      background: #7a7277;
+    }
+    .rel {
+      position: relative;
+      background: white;
+    }
+    .row {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    #print-head {
+      display: none;
+      text-align: center;
+      margin-top: 1em;
+    }
+    @media print {
+      body {
+        background: white;
+      }
+      .control {
+        display: none;
+      }
+      .tools {
+        display: none;
+      }
+      #print-head {
+        display: block;
+      }
+      #context-menu {
+        display: none;
+      }
+    }
+
+    /* Context menu */
+    #context-menu {
+      position: fixed;
+      top: 345px;
+      left: 234px;
+      border-radius: 1em;
+      border: 2px solid black;
+      background: white;
+    }
+    #context-menu div {
+      padding: 0.5em 1em;
+      user-select: none;
+      cursor: pointer;
+    }
+    #context-menu div:nth-of-type(n + 2) {
+      border-top: 2px solid #0003;
+    }
+
+
+     /* Tool panel */
+    .tools {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 1em;
+      background: #fff5;
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+    }
+    .row .button:nth-of-type(n + 2) {
+      margin-left: 1em;
+    }
+    .tools .button {
+      padding: 0.3em 0.6em;
+      border: 2px solid black;
+      border-radius: 1em;
+      font-family: monospace;
+      cursor: pointer;
+      user-select: none;
+    }
+    .tools textarea {
+      width: 25vw;
+      resize: vertical;
+      margin-bottom: 1em;
+      border-radius: 30px;
+      border: 2px solid black;
+      padding: 10px 25px;
+      min-height: 20vh;
+    }
+    .tools .hints {
+      width: 25vw;
+      margin-top: 1em;
+      display: inline-block;
+      opacity: 0.8;
+    }
+    #main-tools{
+      margin-top: 1em;
+    }
+
+    #sorry-message{
+      color: white;
+      position: fixed;
+      font-size: 3.5em;
+      text-align: center;
+      z-index: -1;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    #debug {
+      z-index: 3;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      overflow: scroll;
+      padding: 1em;
+      display: none;
+    }
+
+    .v-box {
+      user-select: none; /* supported by Chrome and Opera */
+     -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Firefox */
+     -ms-user-select: none; /* Internet Explorer/Edge */
+      cursor: pointer;
+    }
+    /* User control indicators */
+    .v-edge .control {
+      stroke-linecap: round;
+      stroke-width: 12;
+      cursor: pointer;
+      stroke: #d313f54d;
+    }
+    .v-box rect {
+      transition: 0.3s cubic-bezier(0.4,0,1,0.6) fill;
+    }
+    .selected rect {
+      fill: #dce7ff;
+    }
+
+    h5{margin: 0;}
+  </style>
+
+</html>
